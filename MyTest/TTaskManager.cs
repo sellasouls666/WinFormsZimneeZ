@@ -74,5 +74,16 @@ namespace MyTest
             Assert.AreEqual("Утреннее задание", tasksForToday[0].GetDescription());
             Assert.AreEqual("Вечерное задание", tasksForToday[1].GetDescription());
         }
+
+        [TestMethod]
+        public void GetTasksByDate_EmptyTaskList_ReturnsEmptyList() //проверка на то, что в случае, если никаких задач нет, вернётся пустой список
+        {
+            TaskManager taskManager = new TaskManager();
+            DateTime today = DateTime.Today;
+
+            List<TaskItem> tasksForToday = taskManager.GetTasksByDate(today);
+
+            Assert.AreEqual(0, tasksForToday.Count);
+        }
     }
 }
