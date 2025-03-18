@@ -57,5 +57,22 @@ namespace MyTest
             Assert.AreEqual(1, tasksForToday.Count);
             Assert.AreEqual("Сегодняшнее задание 2", tasksForToday[0].GetDescription());
         }
+
+        [TestMethod]
+        public void GetTasksByDate_DifferentTimesOnSameDate_ReturnsCorrectTasks() //проверка на то, что в случае двух задач в одну дату, но в разное время, вернутся обе задачи
+        {
+            TaskManager taskManager = new TaskManager();
+            DateTime todayMorning = DateTime.Today.AddHours(8);
+            DateTime todayEvening = DateTime.Today.AddHours(18);
+
+            taskManager.AddTask("Утреннее задание", todayMorning);
+            taskManager.AddTask("Вечерное задание", todayEvening);
+
+            List<TaskItem> tasksForToday = taskManager.GetTasksByDate(DateTime.Today);
+
+            Assert.AreEqual(2, tasksForToday.Count);
+            Assert.AreEqual("Утреннее задание", tasksForToday[0].GetDescription());
+            Assert.AreEqual("Вечерное задание", tasksForToday[1].GetDescription());
+        }
     }
 }
