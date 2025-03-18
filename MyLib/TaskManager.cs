@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyLib
 {
-    class TaskManager
+    public class TaskManager
     {
         private List<TaskItem> tasks = new List<TaskItem>();
 
