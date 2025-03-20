@@ -35,6 +35,8 @@
             this.dateBoxForAdd = new System.Windows.Forms.DateTimePicker();
             this.addButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
+            this.dateBoxForFiltr = new System.Windows.Forms.DateTimePicker();
+            this.filtrButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tasksTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,11 +106,31 @@
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
+            // dateBoxForFiltr
+            // 
+            this.dateBoxForFiltr.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateBoxForFiltr.Location = new System.Drawing.Point(27, 317);
+            this.dateBoxForFiltr.Name = "dateBoxForFiltr";
+            this.dateBoxForFiltr.Size = new System.Drawing.Size(92, 20);
+            this.dateBoxForFiltr.TabIndex = 7;
+            // 
+            // filtrButton
+            // 
+            this.filtrButton.Location = new System.Drawing.Point(147, 315);
+            this.filtrButton.Name = "filtrButton";
+            this.filtrButton.Size = new System.Drawing.Size(98, 23);
+            this.filtrButton.TabIndex = 8;
+            this.filtrButton.Text = "Отфильтровать";
+            this.filtrButton.UseVisualStyleBackColor = true;
+            this.filtrButton.Click += new System.EventHandler(this.filtrButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.filtrButton);
+            this.Controls.Add(this.dateBoxForFiltr);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.dateBoxForAdd);
@@ -133,6 +155,8 @@
         private System.Windows.Forms.DateTimePicker dateBoxForAdd;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.DateTimePicker dateBoxForFiltr;
+        private System.Windows.Forms.Button filtrButton;
     }
 }
 

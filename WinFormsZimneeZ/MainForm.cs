@@ -44,5 +44,12 @@ namespace WinFormsZimneeZ
             int rowIndex = tasksTable.SelectedRows[0].Index;
             taskManager.RemoveTask(rowIndex);
         }
+
+        private void filtrButton_Click(object sender, EventArgs e)
+        {
+            tasksTable.DataSource = taskManager.GetTasksByDate(dateBoxForFiltr.Value);
+        }
+
+
     }
 }
