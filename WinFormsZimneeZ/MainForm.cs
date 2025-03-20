@@ -28,5 +28,10 @@ namespace WinFormsZimneeZ
             taskManager.AddTask("Пропылесосить и помыть пол", DateTime.Now.AddDays(2));
             taskManager.AddTask("Подготовить отчет за месяц", DateTime.Now.AddDays(7));
         }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            taskManager.AddTask(descriptionTextForAdd.Text, dateBoxForAdd.Value);
+        }
     }
 }
