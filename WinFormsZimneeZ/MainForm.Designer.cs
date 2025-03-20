@@ -34,6 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dateBoxForAdd = new System.Windows.Forms.DateTimePicker();
             this.addButton = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tasksTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,7 +44,10 @@
             this.tasksTable.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.tasksTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tasksTable.Location = new System.Drawing.Point(12, 12);
+            this.tasksTable.MultiSelect = false;
             this.tasksTable.Name = "tasksTable";
+            this.tasksTable.ReadOnly = true;
+            this.tasksTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tasksTable.Size = new System.Drawing.Size(776, 210);
             this.tasksTable.TabIndex = 0;
             // 
@@ -90,11 +94,21 @@
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
+            // deleteButton
+            // 
+            this.deleteButton.Location = new System.Drawing.Point(27, 277);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(198, 23);
+            this.deleteButton.TabIndex = 6;
+            this.deleteButton.Text = "Удалить";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.dateBoxForAdd);
             this.Controls.Add(this.label2);
@@ -117,6 +131,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dateBoxForAdd;
         private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.Button deleteButton;
     }
 }
 

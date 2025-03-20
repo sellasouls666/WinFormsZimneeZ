@@ -19,7 +19,6 @@ namespace WinFormsZimneeZ
             InitializeComponent();
             InitializeData();
             tasksTable.DataSource = taskManager.Tasks;
-
         }
 
         private void InitializeData()
@@ -31,6 +30,13 @@ namespace WinFormsZimneeZ
 
         private void addButton_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(descriptionTextForAdd.Text))
+            {
+                MessageBox.Show("Пожалуйста, введите описание задачи.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
             taskManager.AddTask(descriptionTextForAdd.Text, dateBoxForAdd.Value);
         }
     }
