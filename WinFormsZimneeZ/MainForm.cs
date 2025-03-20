@@ -35,9 +35,14 @@ namespace WinFormsZimneeZ
                 MessageBox.Show("Пожалуйста, введите описание задачи.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-
+            
             taskManager.AddTask(descriptionTextForAdd.Text, dateBoxForAdd.Value);
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            int rowIndex = tasksTable.SelectedRows[0].Index;
+            taskManager.RemoveTask(rowIndex);
         }
     }
 }
