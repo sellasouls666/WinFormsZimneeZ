@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,9 +9,12 @@ namespace MyLib
 {
     public class TaskItem
     {
-        private string description_;
-        private DateTime dueDate_;
-        private bool isCompleted_;
+        [DisplayName("Описание")]
+        public string description_ { get; set; }
+        [DisplayName("Дата выполнения")]
+        public DateTime dueDate_ { get; set; }
+        [DisplayName("Выполнено")]
+        public bool isCompleted_ { get; set; }
 
         public TaskItem(string description, DateTime dueDate)
         {

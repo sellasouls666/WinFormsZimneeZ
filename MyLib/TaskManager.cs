@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,12 @@ namespace MyLib
 {
     public class TaskManager
     {
-        private List<TaskItem> tasks = new List<TaskItem>();
+        private BindingList<TaskItem> tasks = new BindingList<TaskItem>();
+
+        public BindingList<TaskItem> Tasks
+        {
+            get { return tasks; }
+        }
 
         public void AddTask(string description, DateTime dueDate)
         {
@@ -28,10 +34,10 @@ namespace MyLib
             }
         }
 
-        public List<TaskItem> GetTasksByDate(DateTime date)
+        /*public List<TaskItem> GetTasksByDate(DateTime date)
         {
             return tasks.FindAll(task => task.GetDate().Date == date.Date && !task.GetStatus());
-        }
+        }*/
 
         public void SaveToHtml(string filePath)
         {

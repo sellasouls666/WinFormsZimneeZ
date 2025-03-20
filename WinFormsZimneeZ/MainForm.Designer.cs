@@ -1,6 +1,6 @@
 ﻿namespace WinFormsZimneeZ
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -28,34 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tasksTable = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.tasksTable)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // tasksTable
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(26, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(406, 191);
-            this.dataGridView1.TabIndex = 0;
+            this.tasksTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.tasksTable.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.tasksTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tasksTable.Location = new System.Drawing.Point(12, 12);
+            this.tasksTable.Name = "tasksTable";
+            this.tasksTable.Size = new System.Drawing.Size(776, 210);
+            this.tasksTable.TabIndex = 0;
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dataGridView1);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Controls.Add(this.tasksTable);
+            this.Name = "MainForm";
+            this.Text = "ToDoList";
+            ((System.ComponentModel.ISupportInitialize)(this.tasksTable)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView tasksTable;
     }
 }
 
