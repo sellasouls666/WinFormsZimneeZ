@@ -11,10 +11,17 @@ namespace MyLib
     public class TaskManager
     {
         private BindingList<TaskItem> tasks = new BindingList<TaskItem>();
+        private BindingList<TaskItem> filteredTasks = new BindingList<TaskItem>();
 
         public BindingList<TaskItem> Tasks
         {
             get { return tasks; }
+        }
+
+        public BindingList<TaskItem> FilteredTasks
+        {
+            get { return filteredTasks; }
+            set { filteredTasks = value; }
         }
 
         public void AddTask(string description, DateTime dueDate)
@@ -25,6 +32,7 @@ namespace MyLib
         public void RemoveTask(TaskItem taskToRemove)
         {
             tasks.Remove(taskToRemove);
+            filteredTasks.Remove(taskToRemove);
         }
 
         public BindingList<TaskItem> GetTasksByDate(DateTime date)

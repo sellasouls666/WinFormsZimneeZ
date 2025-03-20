@@ -41,14 +41,12 @@ namespace WinFormsZimneeZ
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            if (tasksTable.SelectedRows.Count > 0) // Важная проверка!
+            if (tasksTable.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = tasksTable.SelectedRows[0];
 
-                // Получаем объект TaskItem, связанный с этой строкой
                 TaskItem selectedTask = (TaskItem)selectedRow.DataBoundItem;
 
-                // Удаляем задачу
                 taskManager.RemoveTask(selectedTask);
 
             }
@@ -60,7 +58,8 @@ namespace WinFormsZimneeZ
 
         private void filtrButton_Click(object sender, EventArgs e)
         {
-            tasksTable.DataSource = taskManager.GetTasksByDate(dateBoxForFiltr.Value);
+            taskManager.FilteredTasks = taskManager.GetTasksByDate(dateBoxForFiltr.Value);
+            tasksTable.DataSource = taskManager.FilteredTasks;
         }
 
         private void backButton_Click(object sender, EventArgs e)
