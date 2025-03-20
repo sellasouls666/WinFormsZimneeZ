@@ -66,5 +66,23 @@ namespace WinFormsZimneeZ
         {
             tasksTable.DataSource = taskManager.Tasks;
         }
+
+        private void completeButton_Click(object sender, EventArgs e)
+        {
+            if (tasksTable.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = tasksTable.SelectedRows[0];
+
+                TaskItem selectedTask = (TaskItem)selectedRow.DataBoundItem;
+
+                taskManager.CompleteTask(selectedTask);
+                tasksTable.Refresh(); //чтобы выполнение отмечалось сразу, а не после клика на другую строку
+
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, выберите задачу для выполнения.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }

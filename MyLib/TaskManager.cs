@@ -58,16 +58,10 @@ namespace MyLib
             }
         }
 
-        public void CompleteTask(int index)
+        public void CompleteTask(TaskItem taskToComplete)
         {
-            if (index >= 0 && index < tasks.Count)
-            {
-                tasks[index].SetStatus(true);
-            }
-            else
-            {
-                throw new Exception("Неверный номер задачи.");
-            }
+            TaskItem taskToUpdate = tasks.FirstOrDefault(task => task.id_ == taskToComplete.id_);
+            taskToUpdate.SetStatus(true);
         }
     }
 }
