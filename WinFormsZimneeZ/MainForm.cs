@@ -50,6 +50,9 @@ namespace WinFormsZimneeZ
             tasksTable.DataSource = taskManager.GetTasksByDate(dateBoxForFiltr.Value);
         }
 
-
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            tasksTable.DataSource = taskManager.Tasks;
+        }
     }
 }

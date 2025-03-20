@@ -37,6 +37,7 @@
             this.deleteButton = new System.Windows.Forms.Button();
             this.dateBoxForFiltr = new System.Windows.Forms.DateTimePicker();
             this.filtrButton = new System.Windows.Forms.Button();
+            this.backButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tasksTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -124,11 +125,22 @@
             this.filtrButton.UseVisualStyleBackColor = true;
             this.filtrButton.Click += new System.EventHandler(this.filtrButton_Click);
             // 
+            // backButton
+            // 
+            this.backButton.Location = new System.Drawing.Point(266, 317);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(75, 23);
+            this.backButton.TabIndex = 9;
+            this.backButton.Text = "Сбросить";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.backButton);
             this.Controls.Add(this.filtrButton);
             this.Controls.Add(this.dateBoxForFiltr);
             this.Controls.Add(this.deleteButton);
@@ -157,6 +169,7 @@
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.DateTimePicker dateBoxForFiltr;
         private System.Windows.Forms.Button filtrButton;
+        private System.Windows.Forms.Button backButton;
     }
 }
 
