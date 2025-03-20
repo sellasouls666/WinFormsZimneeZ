@@ -34,10 +34,12 @@ namespace MyLib
             }
         }
 
-        /*public List<TaskItem> GetTasksByDate(DateTime date)
+        public BindingList<TaskItem> GetTasksByDate(DateTime date)
         {
-            return tasks.FindAll(task => task.GetDate().Date == date.Date && !task.GetStatus());
-        }*/
+            var filteredTasks = tasks.Where(task => task.dueDate_.Date == date.Date).ToList();
+
+            return new BindingList<TaskItem>(filteredTasks);
+        }
 
         public void SaveToHtml(string filePath)
         {
