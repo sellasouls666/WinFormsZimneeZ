@@ -27,6 +27,7 @@ namespace MyLib
         public void AddTask(string description, DateTime dueDate)
         {
             tasks.Add(new TaskItem(description, dueDate));
+            filteredTasks.Add(new TaskItem(description, dueDate));
         }
 
         public void RemoveTask(TaskItem taskToRemove)
@@ -35,11 +36,14 @@ namespace MyLib
             filteredTasks.Remove(taskToRemove);
         }
 
-        public BindingList<TaskItem> GetTasksByDate(DateTime date)
+        public void FilterByDate(DateTime date)
         {
-            var filteredTasks = tasks.Where(task => task.dueDate_.Date == date.Date).ToList();
-
-            return new BindingList<TaskItem>(filteredTasks);
+            List<TaskItem> filteredList = Tasks.Where(task => task.dueDate_.Date == date.Date).ToList();
+            FilteredTasks.Clear();
+            foreach (TaskItem task in filteredList)
+            {
+                FilteredTasks.Add(task);
+            }
         }
 
         public void SaveToHtml(string filePath)
@@ -67,7 +71,7 @@ namespace MyLib
         public void RemoveCompletedTasks()
         {
 
-            if (FilteredTasks != null && FilteredTasks != Tasks) // Added a check for null
+            if (FilteredTasks != null && FilteredTasks != Tasks)
             {
                 List<TaskItem> incompleteFilteredTasks = filteredTasks.Where(task => !task.isCompleted_).ToList();
                 filteredTasks.Clear();
@@ -85,6 +89,15 @@ namespace MyLib
                 tasks.Add(task);
             }
             tasks.ResetBindings();
+        }
+
+        public void ReturnAllTasks()
+        {
+            FilteredTasks.Clear();
+            foreach (TaskItem task in Tasks)
+            {
+                FilteredTasks.Add(task);
+            }
         }
     }
 }
