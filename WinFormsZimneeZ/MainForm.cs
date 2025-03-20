@@ -58,7 +58,11 @@ namespace WinFormsZimneeZ
 
         private void filtrButton_Click(object sender, EventArgs e)
         {
+            /// предлагается не вовзращать данные методом GetTasksByDate, а сделать метод FilterByDate,
+            /// который меняет содержимое FilteredTasks в рамках своей реализации
             taskManager.FilteredTasks = taskManager.GetTasksByDate(dateBoxForFiltr.Value);
+
+            /// данная инструкция должна быть одна в программе, выполненная в рамках конструктора главной формы
             tasksTable.DataSource = taskManager.FilteredTasks;
         }
 
