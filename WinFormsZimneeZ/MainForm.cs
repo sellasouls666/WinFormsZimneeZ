@@ -84,5 +84,10 @@ namespace WinFormsZimneeZ
                 MessageBox.Show("Пожалуйста, выберите задачу для выполнения.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void deleteCompletedButton_Click(object sender, EventArgs e)
+        {
+            taskManager.RemoveCompletedTasks();
+        }
     }
 }

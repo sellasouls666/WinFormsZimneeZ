@@ -63,5 +63,28 @@ namespace MyLib
             TaskItem taskToUpdate = tasks.FirstOrDefault(task => task.id_ == taskToComplete.id_);
             taskToUpdate.SetStatus(true);
         }
+
+        public void RemoveCompletedTasks()
+        {
+
+            if (FilteredTasks != null && FilteredTasks != Tasks) // Added a check for null
+            {
+                List<TaskItem> incompleteFilteredTasks = filteredTasks.Where(task => !task.isCompleted_).ToList();
+                filteredTasks.Clear();
+                foreach (TaskItem task in incompleteFilteredTasks)
+                {
+                    filteredTasks.Add(task);
+                }
+                filteredTasks.ResetBindings();
+            }
+
+            List<TaskItem> incompleteTasks = tasks.Where(task => !task.isCompleted_).ToList();
+            tasks.Clear();
+            foreach (TaskItem task in incompleteTasks)
+            {
+                tasks.Add(task);
+            }
+            tasks.ResetBindings();
+        }
     }
 }
