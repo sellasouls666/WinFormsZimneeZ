@@ -22,16 +22,20 @@ namespace MyTest
         }
 
         [TestMethod]
-        [DataRow("2024-01-10", 2)]
-        [DataRow("2024-01-11", 2)]
-        [DataRow("2024-01-12", 0)]
-        public void TestFilterByDate(string dateString, int expectedCount)
+        [DataRow("2024-01-10", 2, new string[] { "Task 1", "Task 2" })]
+        [DataRow("2024-01-11", 2, new string[] { "Task 3", "Task 4" })]
+        [DataRow("2024-01-12", 0, new string[] { })]
+        public void TestFilterByDate(string dateString, int expectedCount, string[] expectedDescriptions)
         {
             DateTime filterDate = DateTime.Parse(dateString);
 
             taskManager.FilterByDate(filterDate);
 
             Assert.AreEqual(expectedCount, taskManager.FilteredTasks.Count);
+            for (int i = 0; i < expectedDescriptions.Length; i++)
+            {
+                Assert.AreEqual(expectedDescriptions[i], taskManager.FilteredTasks[i].description_);
+            }
         }
     }
 }
