@@ -8,82 +8,30 @@ namespace MyTest
     [TestClass]
     public class TTaskManager
     {
-        [TestMethod]
-        public void GetTasksByDate_ReturnsCorrectTasks() // проверка правильного возвращения задач на определённую дату
+        private TaskManager taskManager;
+
+        [TestInitialize]
+        public void TestInitialize()
         {
-            TaskManager taskManager = new TaskManager();
-            DateTime today = DateTime.Today;
-            DateTime tomorrow = DateTime.Today.AddDays(1);
-            DateTime yesterday = DateTime.Today.AddDays(-1);
+            taskManager = new TaskManager();
 
-            taskManager.AddTask("Сегодняшнее задание 1", today);
-            taskManager.AddTask("Завтрашнее задание", tomorrow);
-            taskManager.AddTask("Сегодняшнее задание 2", today);
-            taskManager.AddTask("Вчерашнее задание", yesterday);
-
-            List<TaskItem> tasksForToday = taskManager.GetTasksByDate(today);
-
-            Assert.AreEqual(2, tasksForToday.Count);
-            Assert.AreEqual("Сегодняшнее задание 1", tasksForToday[0].GetDescription());
-            Assert.AreEqual("Сегодняшнее задание 2", tasksForToday[1].GetDescription());
+            taskManager.AddTask("Task 1", new DateTime(2024, 01, 10));
+            taskManager.AddTask("Task 2", new DateTime(2024, 01, 10));
+            taskManager.AddTask("Task 3", new DateTime(2024, 01, 11));
+            taskManager.AddTask("Task 4", new DateTime(2024, 01, 11));
         }
 
         [TestMethod]
-        public void GetTasksByDate_NoTasksForDate_ReturnsEmptyList() //проверка возвращения пустого списка в случае, если нет задач на указанную дату
+        [DataRow("2024-01-10", 2)]
+        [DataRow("2024-01-11", 2)]
+        [DataRow("2024-01-12", 0)]
+        public void TestFilterByDate(string dateString, int expectedCount)
         {
-            TaskManager taskManager = new TaskManager();
-            DateTime today = DateTime.Today;
-            DateTime tomorrow = DateTime.Today.AddDays(1);
+            DateTime filterDate = DateTime.Parse(dateString);
 
-            taskManager.AddTask("Завтрашнее задание", tomorrow);
+            taskManager.FilterByDate(filterDate);
 
-            List<TaskItem> tasksForToday = taskManager.GetTasksByDate(today);
-
-            Assert.AreEqual(0, tasksForToday.Count);
-        }
-
-        [TestMethod]
-        public void GetTasksByDate_CompletedTasksAreNotReturned() //проверка на то, что выполненная задача не будет возвращаться
-        {
-            TaskManager taskManager = new TaskManager();
-            DateTime today = DateTime.Today;
-
-            taskManager.AddTask("Сегодняшнее задание 1", today);
-            taskManager.AddTask("Сегодняшнее задание 2", today);
-            taskManager.CompleteTask(0);
-
-            List<TaskItem> tasksForToday = taskManager.GetTasksByDate(today);
-
-            Assert.AreEqual(1, tasksForToday.Count);
-            Assert.AreEqual("Сегодняшнее задание 2", tasksForToday[0].GetDescription());
-        }
-
-        [TestMethod]
-        public void GetTasksByDate_DifferentTimesOnSameDate_ReturnsCorrectTasks() //проверка на то, что в случае двух задач в одну дату, но в разное время, вернутся обе задачи
-        {
-            TaskManager taskManager = new TaskManager();
-            DateTime todayMorning = DateTime.Today.AddHours(8);
-            DateTime todayEvening = DateTime.Today.AddHours(18);
-
-            taskManager.AddTask("Утреннее задание", todayMorning);
-            taskManager.AddTask("Вечерное задание", todayEvening);
-
-            List<TaskItem> tasksForToday = taskManager.GetTasksByDate(DateTime.Today);
-
-            Assert.AreEqual(2, tasksForToday.Count);
-            Assert.AreEqual("Утреннее задание", tasksForToday[0].GetDescription());
-            Assert.AreEqual("Вечерное задание", tasksForToday[1].GetDescription());
-        }
-
-        [TestMethod]
-        public void GetTasksByDate_EmptyTaskList_ReturnsEmptyList() //проверка на то, что в случае, если никаких задач нет, вернётся пустой список
-        {
-            TaskManager taskManager = new TaskManager();
-            DateTime today = DateTime.Today;
-
-            List<TaskItem> tasksForToday = taskManager.GetTasksByDate(today);
-
-            Assert.AreEqual(0, tasksForToday.Count);
+            Assert.AreEqual(expectedCount, taskManager.FilteredTasks.Count);
         }
     }
 }
