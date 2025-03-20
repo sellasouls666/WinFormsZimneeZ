@@ -41,8 +41,21 @@ namespace WinFormsZimneeZ
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            int rowIndex = tasksTable.SelectedRows[0].Index;
-            taskManager.RemoveTask(rowIndex);
+            if (tasksTable.SelectedRows.Count > 0) // Важная проверка!
+            {
+                DataGridViewRow selectedRow = tasksTable.SelectedRows[0];
+
+                // Получаем объект TaskItem, связанный с этой строкой
+                TaskItem selectedTask = (TaskItem)selectedRow.DataBoundItem;
+
+                // Удаляем задачу
+                taskManager.RemoveTask(selectedTask);
+
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, выберите задачу для удаления.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void filtrButton_Click(object sender, EventArgs e)

@@ -22,16 +22,9 @@ namespace MyLib
             tasks.Add(new TaskItem(description, dueDate));
         }
 
-        public void RemoveTask(int index)
+        public void RemoveTask(TaskItem taskToRemove)
         {
-            if (index >= 0 && index < tasks.Count)
-            {
-                tasks.RemoveAt(index);
-            }
-            else
-            {
-                throw new Exception("Неверный номер задачи.");
-            }
+            tasks.Remove(taskToRemove);
         }
 
         public BindingList<TaskItem> GetTasksByDate(DateTime date)

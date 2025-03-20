@@ -9,6 +9,8 @@ namespace MyLib
 {
     public class TaskItem
     {
+        private static int nextId = 0;
+        public int id_;
         [DisplayName("Описание")]
         public string description_ { get; set; }
         [DisplayName("Дата выполнения")]
@@ -18,6 +20,7 @@ namespace MyLib
 
         public TaskItem(string description, DateTime dueDate)
         {
+            id_ = nextId++;
             description_ = description;
             dueDate_ = dueDate;
             isCompleted_ = false;
