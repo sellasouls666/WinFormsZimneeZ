@@ -101,5 +101,17 @@ namespace MyLib
                 FilteredTasks.Add(task);
             }
         }
+
+        public int GenerateNextId()
+        {
+            if (tasks.Count == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return tasks.Max(task => task.id_) + 1;
+            }
+        }
     }
 }

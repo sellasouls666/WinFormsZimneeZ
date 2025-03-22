@@ -40,6 +40,7 @@ namespace WinFormsZimneeZ
             }
 
             taskManager.AddTask(newId, descriptionBox.Text, dateBox.Value);
+            this.Close();
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
