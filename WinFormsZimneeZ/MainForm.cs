@@ -30,13 +30,8 @@ namespace WinFormsZimneeZ
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            /*if (string.IsNullOrWhiteSpace(descriptionTextForAdd.Text))
-            {
-                MessageBox.Show("Пожалуйста, введите описание задачи.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            
-            taskManager.AddTask(descriptionTextForAdd.Text, dateBoxForAdd.Value);*/
+            var addForm = new AddForm();
+            addForm.Show();
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
