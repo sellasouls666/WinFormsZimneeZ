@@ -16,26 +16,31 @@ namespace MyTest
         {
             taskManager = new TaskManager();
 
-            taskManager.AddTask("Task 1", new DateTime(2024, 01, 10));
-            taskManager.AddTask("Task 2", new DateTime(2024, 01, 10));
-            taskManager.AddTask("Task 3", new DateTime(2024, 01, 11));
-            taskManager.AddTask("Task 4", new DateTime(2024, 01, 11));
+            taskManager.AddTask(0, "Task 1", new DateTime(2024, 01, 10));
+            taskManager.AddTask(1, "Task 2", new DateTime(2024, 01, 10));
+            taskManager.AddTask(2, "Task 3", new DateTime(2024, 01, 11));
+            taskManager.AddTask(3, "Task 4", new DateTime(2024, 01, 11));
         }
 
         [TestMethod]
-        [DataRow("2024-01-10", 2, new string[] { "Task 1", "Task 2" })]
-        [DataRow("2024-01-11", 2, new string[] { "Task 3", "Task 4" })]
-        [DataRow("2024-01-12", 0, new string[] { })]
-        public void TestFilterByDate(string dateString, int expectedCount, string[] expectedDescriptions)
+        [DataRow("2024-01-10", 0, "Task 1", "2024-01-10", 1, "Task 2", "2024-01-10")]
+        [DataRow("2024-01-11", 2, "Task 3", "2024-01-11", 3, "Task 4", "2024-01-11")]
+        [DataRow("2024-01-12")]
+        public void TestFilterByDate(string dateString, params object[] expectedTaskData)
         {
             DateTime filterDate = DateTime.Parse(dateString);
-
             taskManager.FilterByDate(filterDate);
 
-            // Create a list of expected TaskItem objects
-            List<TaskItem> expectedTasks = expectedDescriptions.Select(desc => new TaskItem(desc, filterDate)).ToList();
+            List<TaskItem> expectedTasks = new List<TaskItem>();
 
+            for (int i = 0; i < expectedTaskData.Length; i += 3)
+            {
+                int id = Convert.ToInt32(expectedTaskData[i]);
+                string description = (string)expectedTaskData[i + 1];
+                DateTime dueDate = DateTime.Parse((string)expectedTaskData[i + 2]);
 
+                expectedTasks.Add(new TaskItem(id, description, dueDate));
+            }
             CollectionAssert.AreEqual(expectedTasks, taskManager.FilteredTasks);
         }
     }

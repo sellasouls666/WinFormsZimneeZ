@@ -9,7 +9,6 @@ namespace MyLib
 {
     public class TaskItem
     {
-        private static int nextId = 0;
         public int id_;
         [DisplayName("Описание")]
         public string description_ { get; set; }
@@ -18,9 +17,9 @@ namespace MyLib
         [DisplayName("Выполнено")]
         public bool isCompleted_ { get; set; }
 
-        public TaskItem(string description, DateTime dueDate)
+        public TaskItem(int id, string description, DateTime dueDate)
         {
-            id_ = nextId++;
+            id_ = id;
             description_ = description;
             dueDate_ = dueDate;
             isCompleted_ = false;
@@ -54,7 +53,8 @@ namespace MyLib
             }
 
             TaskItem other = (TaskItem)obj;
-            return description_ == other.description_ &&
+            return id_ == other.id_ &&
+                   description_ == other.description_ &&
                    dueDate_.Date == other.dueDate_.Date && 
                    isCompleted_ == other.isCompleted_;
         }

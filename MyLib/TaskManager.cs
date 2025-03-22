@@ -24,10 +24,10 @@ namespace MyLib
             set { filteredTasks = value; }
         }
 
-        public void AddTask(string description, DateTime dueDate)
+        public void AddTask(int id, string description, DateTime dueDate)
         {
-            tasks.Add(new TaskItem(description, dueDate));
-            filteredTasks.Add(new TaskItem(description, dueDate));
+            tasks.Add(new TaskItem(id, description, dueDate));
+            filteredTasks.Add(new TaskItem(id, description, dueDate));
         }
 
         public void RemoveTask(TaskItem taskToRemove)
