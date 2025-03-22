@@ -45,5 +45,18 @@ namespace MyLib
         {
             return isCompleted_ = status;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+
+            TaskItem other = (TaskItem)obj;
+            return description_ == other.description_ &&
+                   dueDate_.Date == other.dueDate_.Date && 
+                   isCompleted_ == other.isCompleted_;
+        }
     }
 }

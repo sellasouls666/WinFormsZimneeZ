@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MyLib;
 
@@ -31,11 +32,11 @@ namespace MyTest
 
             taskManager.FilterByDate(filterDate);
 
-            Assert.AreEqual(expectedCount, taskManager.FilteredTasks.Count);
-            for (int i = 0; i < expectedDescriptions.Length; i++)
-            {
-                Assert.AreEqual(expectedDescriptions[i], taskManager.FilteredTasks[i].description_);
-            }
+            // Create a list of expected TaskItem objects
+            List<TaskItem> expectedTasks = expectedDescriptions.Select(desc => new TaskItem(desc, filterDate)).ToList();
+
+
+            CollectionAssert.AreEqual(expectedTasks, taskManager.FilteredTasks);
         }
     }
 }
