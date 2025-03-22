@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             this.tasksTable = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.descriptionTextForAdd = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dateBoxForAdd = new System.Windows.Forms.DateTimePicker();
             this.addButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.dateBoxForFiltr = new System.Windows.Forms.DateTimePicker();
@@ -50,50 +46,17 @@
             this.tasksTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.tasksTable.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.tasksTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tasksTable.Location = new System.Drawing.Point(12, 137);
+            this.tasksTable.Location = new System.Drawing.Point(12, 67);
             this.tasksTable.MultiSelect = false;
             this.tasksTable.Name = "tasksTable";
             this.tasksTable.ReadOnly = true;
             this.tasksTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tasksTable.Size = new System.Drawing.Size(526, 210);
+            this.tasksTable.Size = new System.Drawing.Size(484, 280);
             this.tasksTable.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Описание задачи";
-            // 
-            // descriptionTextForAdd
-            // 
-            this.descriptionTextForAdd.Location = new System.Drawing.Point(104, 8);
-            this.descriptionTextForAdd.Name = "descriptionTextForAdd";
-            this.descriptionTextForAdd.Size = new System.Drawing.Size(210, 20);
-            this.descriptionTextForAdd.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(327, 11);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Дата выполнения";
-            // 
-            // dateBoxForAdd
-            // 
-            this.dateBoxForAdd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateBoxForAdd.Location = new System.Drawing.Point(430, 8);
-            this.dateBoxForAdd.Name = "dateBoxForAdd";
-            this.dateBoxForAdd.Size = new System.Drawing.Size(83, 20);
-            this.dateBoxForAdd.TabIndex = 4;
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(15, 39);
+            this.addButton.Location = new System.Drawing.Point(15, 11);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(66, 40);
             this.addButton.TabIndex = 5;
@@ -103,7 +66,7 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(264, 39);
+            this.deleteButton.Location = new System.Drawing.Point(264, 11);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(59, 40);
             this.deleteButton.TabIndex = 6;
@@ -131,7 +94,7 @@
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(92, 39);
+            this.backButton.Location = new System.Drawing.Point(92, 11);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(63, 40);
             this.backButton.TabIndex = 9;
@@ -141,7 +104,7 @@
             // 
             // completeButton
             // 
-            this.completeButton.Location = new System.Drawing.Point(173, 39);
+            this.completeButton.Location = new System.Drawing.Point(173, 11);
             this.completeButton.Name = "completeButton";
             this.completeButton.Size = new System.Drawing.Size(73, 40);
             this.completeButton.TabIndex = 10;
@@ -151,7 +114,7 @@
             // 
             // deleteCompletedButton
             // 
-            this.deleteCompletedButton.Location = new System.Drawing.Point(343, 39);
+            this.deleteCompletedButton.Location = new System.Drawing.Point(343, 11);
             this.deleteCompletedButton.Name = "deleteCompletedButton";
             this.deleteCompletedButton.Size = new System.Drawing.Size(126, 40);
             this.deleteCompletedButton.TabIndex = 11;
@@ -163,23 +126,19 @@
             // 
             this.panel1.Controls.Add(this.deleteButton);
             this.panel1.Controls.Add(this.deleteCompletedButton);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.completeButton);
-            this.panel1.Controls.Add(this.descriptionTextForAdd);
             this.panel1.Controls.Add(this.backButton);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.dateBoxForAdd);
             this.panel1.Controls.Add(this.addButton);
-            this.panel1.Location = new System.Drawing.Point(12, 23);
+            this.panel1.Location = new System.Drawing.Point(12, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(526, 94);
+            this.panel1.Size = new System.Drawing.Size(484, 59);
             this.panel1.TabIndex = 12;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(555, 394);
+            this.ClientSize = new System.Drawing.Size(507, 394);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tasksTable);
             this.Controls.Add(this.filtrButton);
@@ -188,7 +147,6 @@
             this.Text = "ToDoList";
             ((System.ComponentModel.ISupportInitialize)(this.tasksTable)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -196,10 +154,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView tasksTable;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox descriptionTextForAdd;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateBoxForAdd;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.DateTimePicker dateBoxForFiltr;
