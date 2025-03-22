@@ -31,12 +31,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.idBox = new System.Windows.Forms.NumericUpDown();
+            this.descriptionBox = new System.Windows.Forms.TextBox();
+            this.dateBox = new System.Windows.Forms.DateTimePicker();
             this.AddButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.idBox)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -66,26 +66,26 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Введите дату выполнения:";
             // 
-            // numericUpDown1
+            // idBox
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(183, 22);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(202, 20);
-            this.numericUpDown1.TabIndex = 3;
+            this.idBox.Location = new System.Drawing.Point(183, 22);
+            this.idBox.Name = "idBox";
+            this.idBox.Size = new System.Drawing.Size(202, 20);
+            this.idBox.TabIndex = 3;
             // 
-            // textBox1
+            // descriptionBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(185, 49);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 20);
-            this.textBox1.TabIndex = 4;
+            this.descriptionBox.Location = new System.Drawing.Point(185, 49);
+            this.descriptionBox.Name = "descriptionBox";
+            this.descriptionBox.Size = new System.Drawing.Size(200, 20);
+            this.descriptionBox.TabIndex = 4;
             // 
-            // dateTimePicker1
+            // dateBox
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(185, 75);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 5;
+            this.dateBox.Location = new System.Drawing.Point(185, 75);
+            this.dateBox.Name = "dateBox";
+            this.dateBox.Size = new System.Drawing.Size(200, 20);
+            this.dateBox.TabIndex = 5;
             // 
             // AddButton
             // 
@@ -95,6 +95,7 @@
             this.AddButton.TabIndex = 6;
             this.AddButton.Text = "Добавить";
             this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // cancelButton
             // 
@@ -112,15 +113,15 @@
             this.ClientSize = new System.Drawing.Size(411, 173);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.AddButton);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.dateBox);
+            this.Controls.Add(this.descriptionBox);
+            this.Controls.Add(this.idBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "AddForm";
             this.Text = "Add";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.idBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,9 +132,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.NumericUpDown idBox;
+        private System.Windows.Forms.TextBox descriptionBox;
+        private System.Windows.Forms.DateTimePicker dateBox;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button cancelButton;
     }

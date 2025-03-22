@@ -13,7 +13,7 @@ namespace WinFormsZimneeZ
 {
     public partial class MainForm: Form
     {
-        private TaskManager taskManager = new TaskManager();
+        public TaskManager taskManager = new TaskManager();
         public MainForm()
         {
             InitializeComponent();
@@ -30,8 +30,8 @@ namespace WinFormsZimneeZ
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            var addForm = new AddForm();
-            addForm.Show();
+            var addForm = new AddForm(taskManager);
+            addForm.ShowDialog();
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
