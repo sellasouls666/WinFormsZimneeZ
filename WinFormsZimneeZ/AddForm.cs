@@ -23,23 +23,17 @@ namespace WinFormsZimneeZ
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            int newId = Convert.ToInt32(idBox.Value);
-
-            bool idExists = taskManager.Tasks.Any(task => task.id_ == newId);
-
-            if (idExists)
-            {
-                MessageBox.Show("Задача с таким ID уже существует. Пожалуйста, введите другой ID.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; 
-            }
+            int newId = taskManager.GenerateNextId();
 
             if (string.IsNullOrWhiteSpace(descriptionBox.Text))
             {
                 MessageBox.Show("Пожалуйста, введите описание задачи.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; 
+                return;
             }
 
             taskManager.AddTask(newId, descriptionBox.Text, dateBox.Value);
+
+            MessageBox.Show("Задача успешно добавлена", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
 
