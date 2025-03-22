@@ -66,6 +66,8 @@ namespace MyLib
         {
             TaskItem taskToUpdate = tasks.FirstOrDefault(task => task.id_ == taskToComplete.id_);
             taskToUpdate.SetStatus(true);
+            TaskItem taskToUpdateFromFiltered = filteredTasks.FirstOrDefault(task => task.id_ == taskToComplete.id_);
+            taskToUpdateFromFiltered.SetStatus(true);
         }
 
         public void RemoveCompletedTasks()
