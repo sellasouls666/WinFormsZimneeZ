@@ -43,5 +43,34 @@ namespace MyTest
             }
             CollectionAssert.AreEqual(expectedTasks, taskManager.FilteredTasks);
         }
+
+        [TestMethod]
+        [DataRow("2024-01-10", 0, "Task 1")]
+        [DataRow("2024-01-11", 1, "Task 2")]
+        public void TestAddTask(string dueDateString, int id, string description)
+        {
+            // Arrange
+            DateTime dueDate = DateTime.Parse(dueDateString);
+
+            // Act
+            taskManager.AddTask(id, description, dueDate);
+
+            // Assert
+            // Проверка Tasks
+            List<TaskItem> expectedTasks = new List<TaskItem> {
+            new TaskItem(0, "Task 1", DateTime.Parse("2024-01-10")),
+            new TaskItem(1, "Task 2", DateTime.Parse("2024-01-11")),
+            };
+            List<TaskItem> actualTasks = taskManager.Tasks.ToList();
+            CollectionAssert.AreEqual(expectedTasks, actualTasks, "Списки Tasks не совпадают.");
+
+            // Проверка FilteredTasks
+            List<TaskItem> expectedFilteredTasks = new List<TaskItem> {
+            new TaskItem(0, "Task 1", DateTime.Parse("2024-01-10")),
+            new TaskItem(1, "Task 2", DateTime.Parse("2024-01-11")),
+            };
+            List<TaskItem> actualFilteredTasks = taskManager.FilteredTasks.ToList();
+            CollectionAssert.AreEqual(expectedFilteredTasks, actualFilteredTasks, "Списки FilteredTasks не совпадают.");
+        }
     }
 }
