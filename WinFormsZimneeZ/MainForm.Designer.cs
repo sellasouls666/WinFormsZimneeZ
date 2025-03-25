@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tasksTable = new System.Windows.Forms.DataGridView();
             this.addButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
@@ -56,21 +57,26 @@
             // 
             // addButton
             // 
+            this.addButton.BackColor = System.Drawing.Color.Transparent;
+            this.addButton.FlatAppearance.BorderSize = 0;
+            this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addButton.Image = ((System.Drawing.Image)(resources.GetObject("addButton.Image")));
             this.addButton.Location = new System.Drawing.Point(15, 11);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(66, 40);
+            this.addButton.Size = new System.Drawing.Size(41, 40);
             this.addButton.TabIndex = 5;
-            this.addButton.Text = "Добавить";
-            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.UseVisualStyleBackColor = false;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(264, 11);
+            this.deleteButton.FlatAppearance.BorderSize = 0;
+            this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteButton.Image = ((System.Drawing.Image)(resources.GetObject("deleteButton.Image")));
+            this.deleteButton.Location = new System.Drawing.Point(149, 10);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(59, 40);
+            this.deleteButton.Size = new System.Drawing.Size(48, 40);
             this.deleteButton.TabIndex = 6;
-            this.deleteButton.Text = "Удалить задачу";
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
@@ -94,31 +100,39 @@
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(92, 11);
+            this.backButton.BackColor = System.Drawing.Color.Transparent;
+            this.backButton.FlatAppearance.BorderSize = 0;
+            this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.backButton.Image = ((System.Drawing.Image)(resources.GetObject("backButton.Image")));
+            this.backButton.Location = new System.Drawing.Point(57, 11);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(63, 40);
+            this.backButton.Size = new System.Drawing.Size(45, 40);
             this.backButton.TabIndex = 9;
-            this.backButton.Text = "Сбросить";
-            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.UseVisualStyleBackColor = false;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // completeButton
             // 
-            this.completeButton.Location = new System.Drawing.Point(173, 11);
+            this.completeButton.FlatAppearance.BorderSize = 0;
+            this.completeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.completeButton.Image = ((System.Drawing.Image)(resources.GetObject("completeButton.Image")));
+            this.completeButton.Location = new System.Drawing.Point(104, 12);
             this.completeButton.Name = "completeButton";
-            this.completeButton.Size = new System.Drawing.Size(73, 40);
+            this.completeButton.Size = new System.Drawing.Size(44, 40);
             this.completeButton.TabIndex = 10;
-            this.completeButton.Text = "Выполнить задачу";
             this.completeButton.UseVisualStyleBackColor = true;
             this.completeButton.Click += new System.EventHandler(this.completeButton_Click);
             // 
             // deleteCompletedButton
             // 
-            this.deleteCompletedButton.Location = new System.Drawing.Point(343, 11);
+            this.deleteCompletedButton.FlatAppearance.BorderSize = 0;
+            this.deleteCompletedButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteCompletedButton.Image = ((System.Drawing.Image)(resources.GetObject("deleteCompletedButton.Image")));
+            this.deleteCompletedButton.Location = new System.Drawing.Point(201, 12);
             this.deleteCompletedButton.Name = "deleteCompletedButton";
-            this.deleteCompletedButton.Size = new System.Drawing.Size(126, 40);
+            this.deleteCompletedButton.Size = new System.Drawing.Size(44, 40);
             this.deleteCompletedButton.TabIndex = 11;
-            this.deleteCompletedButton.Text = "Удалить выполненные задачи";
+            this.deleteCompletedButton.Text = "\r\n";
             this.deleteCompletedButton.UseVisualStyleBackColor = true;
             this.deleteCompletedButton.Click += new System.EventHandler(this.deleteCompletedButton_Click);
             // 
