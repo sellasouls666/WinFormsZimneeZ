@@ -54,11 +54,13 @@ namespace WinFormsZimneeZ
         private void filtrButton_Click(object sender, EventArgs e)
         {
             taskManager.FilterByDate(dateBoxForFiltr.Value);
+            backButton.Enabled = true;
         }
 
         private void backButton_Click(object sender, EventArgs e)
         {
             taskManager.ReturnAllTasks();
+            backButton.Enabled = false;
         }
 
         private void completeButton_Click(object sender, EventArgs e)
