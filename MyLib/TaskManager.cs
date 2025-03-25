@@ -16,6 +16,7 @@ namespace MyLib
         public BindingList<TaskItem> Tasks
         {
             get { return tasks; }
+            set { tasks = value; }
         }
 
         public BindingList<TaskItem> FilteredTasks

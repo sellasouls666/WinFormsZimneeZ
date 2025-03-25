@@ -9,18 +9,6 @@ namespace MyTest
     [TestClass]
     public class TTaskManager
     {
-        private TaskManager taskManager;
-
-        [TestInitialize]
-        public void TestInitialize()
-        {
-            taskManager = new TaskManager();
-
-            taskManager.AddTask(0, "Task 1", new DateTime(2024, 01, 10));
-            taskManager.AddTask(1, "Task 2", new DateTime(2024, 01, 10));
-            taskManager.AddTask(2, "Task 3", new DateTime(2024, 01, 11));
-            taskManager.AddTask(3, "Task 4", new DateTime(2024, 01, 11));
-        }
 
         [TestMethod]
         [DataRow("2024-01-10", 0, "Task 1", "2024-01-10", 1, "Task 2", "2024-01-10")]
@@ -28,6 +16,13 @@ namespace MyTest
         [DataRow("2024-01-12")]
         public void TestFilterByDate(string dateString, params object[] expectedTaskData)
         {
+            TaskManager taskManager = new TaskManager();
+
+            taskManager.AddTask(0, "Task 1", new DateTime(2024, 01, 10));
+            taskManager.AddTask(1, "Task 2", new DateTime(2024, 01, 10));
+            taskManager.AddTask(2, "Task 3", new DateTime(2024, 01, 11));
+            taskManager.AddTask(3, "Task 4", new DateTime(2024, 01, 11));
+
             DateTime filterDate = DateTime.Parse(dateString);
             taskManager.FilterByDate(filterDate);
 
@@ -49,6 +44,8 @@ namespace MyTest
         [DataRow("2024-01-11", 1, "Task 2")]
         public void TestAddTask(string dueDateString, int id, string description)
         {
+            TaskManager taskManager = new TaskManager();
+
             // Arrange
             DateTime dueDate = DateTime.Parse(dueDateString);
 
@@ -58,16 +55,14 @@ namespace MyTest
             // Assert
             // Проверка Tasks
             List<TaskItem> expectedTasks = new List<TaskItem> {
-            new TaskItem(0, "Task 1", DateTime.Parse("2024-01-10")),
-            new TaskItem(1, "Task 2", DateTime.Parse("2024-01-11")),
+            new TaskItem(id, description, dueDate)
             };
             List<TaskItem> actualTasks = taskManager.Tasks.ToList();
             CollectionAssert.AreEqual(expectedTasks, actualTasks, "Списки Tasks не совпадают.");
 
             // Проверка FilteredTasks
             List<TaskItem> expectedFilteredTasks = new List<TaskItem> {
-            new TaskItem(0, "Task 1", DateTime.Parse("2024-01-10")),
-            new TaskItem(1, "Task 2", DateTime.Parse("2024-01-11")),
+            new TaskItem(id, description, dueDate)
             };
             List<TaskItem> actualFilteredTasks = taskManager.FilteredTasks.ToList();
             CollectionAssert.AreEqual(expectedFilteredTasks, actualFilteredTasks, "Списки FilteredTasks не совпадают.");
