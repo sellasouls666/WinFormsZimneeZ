@@ -171,7 +171,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(507, 447);
+            this.ClientSize = new System.Drawing.Size(507, 414);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tasksTable);
             this.Controls.Add(this.filtrButton);
