@@ -50,10 +50,10 @@
             this.tasksTable.Location = new System.Drawing.Point(12, 86);
             this.tasksTable.MultiSelect = false;
             this.tasksTable.Name = "tasksTable";
-            this.tasksTable.ReadOnly = true;
             this.tasksTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tasksTable.Size = new System.Drawing.Size(484, 261);
             this.tasksTable.TabIndex = 0;
+            this.tasksTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tasksTable_CellContentClick);
             // 
             // addButton
             // 

@@ -85,5 +85,10 @@ namespace WinFormsZimneeZ
         {
             taskManager.RemoveCompletedTasks();
         }
+
+        private void tasksTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

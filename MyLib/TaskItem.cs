@@ -10,11 +10,11 @@ namespace MyLib
     public class TaskItem
     {
         public int id_;
-        [DisplayName("Описание")]
+        [DisplayName("Описание"), ReadOnly(true)]
         public string description_ { get; set; }
-        [DisplayName("Дата выполнения")]
+        [DisplayName("Дата выполнения"), ReadOnly(true)]
         public DateTime dueDate_ { get; set; }
-        [DisplayName("Выполнено")]
+        [DisplayName("Выполнено"), ReadOnly(false)]
         public bool isCompleted_ { get; set; }
 
         public TaskItem(int id, string description, DateTime dueDate)
