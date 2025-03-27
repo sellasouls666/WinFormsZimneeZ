@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
 namespace WinFormsZimneeZ
 {
@@ -27,6 +28,8 @@ namespace WinFormsZimneeZ
             taskManager.AddTask(1, "Пропылесосить и помыть пол", DateTime.Now.AddDays(2));
             taskManager.AddTask(2, "Подготовить отчет за месяц", DateTime.Now.AddDays(7));
         }
+
+      
 
         private void addButton_Click(object sender, EventArgs e)
         {
@@ -84,11 +87,6 @@ namespace WinFormsZimneeZ
         private void deleteCompletedButton_Click(object sender, EventArgs e)
         {
             taskManager.RemoveCompletedTasks();
-        }
-
-        private void tasksTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

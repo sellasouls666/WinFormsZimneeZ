@@ -53,7 +53,6 @@
             this.tasksTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tasksTable.Size = new System.Drawing.Size(484, 261);
             this.tasksTable.TabIndex = 0;
-            this.tasksTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tasksTable_CellContentClick);
             // 
             // addButton
             // 
