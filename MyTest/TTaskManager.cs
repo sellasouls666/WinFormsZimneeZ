@@ -40,32 +40,30 @@ namespace MyTest
         }
 
         [TestMethod]
-        [DataRow("2024-01-10", 0, "Task 1")]
-        [DataRow("2024-01-11", 1, "Task 2")]
-        public void TestAddTask(string dueDateString, int id, string description)
+        [DataRow(new int[] { 1, 2 }, new string[] { "Task 1", "Task 2" }, new string[] { "2024-01-15", "2024-02-20" })]
+        [DataRow(new int[] { 3, 4, 5 }, new string[] { "Task 3", "Task 4", "Task 5" }, new string[] { "2024-03-10", "2024-04-05", "2024-04-06" })]
+        [DataRow(new int[] { }, new string[] { }, new string[] { })]
+        public void AddTask_MultipleTasks_TasksAddedCorrectly(int[] ids, string[] descriptions, string[] dueDateStrings)
         {
-            TaskManager taskManager = new TaskManager();
-
             // Arrange
-            DateTime dueDate = DateTime.Parse(dueDateString);
+            TaskManager taskManager = new TaskManager();
+            List<TaskItem> expectedTasks = new List<TaskItem>();
 
-            // Act
-            taskManager.AddTask(id, description, dueDate);
+            for (int i = 0; i < ids.Length; i++)
+            {
+                int id = ids[i];
+                string description = descriptions[i];
+                DateTime dueDate = DateTime.Parse(dueDateStrings[i]);
+                TaskItem task = new TaskItem(id, description, dueDate);
+                expectedTasks.Add(task);
+                taskManager.AddTask(id, description, dueDate);
+            }
 
-            // Assert
-            // Проверка Tasks
-            List<TaskItem> expectedTasks = new List<TaskItem> {
-            new TaskItem(id, description, dueDate)
-            };
             List<TaskItem> actualTasks = taskManager.Tasks.ToList();
-            CollectionAssert.AreEqual(expectedTasks, actualTasks, "Списки Tasks не совпадают.");
-
-            // Проверка FilteredTasks
-            List<TaskItem> expectedFilteredTasks = new List<TaskItem> {
-            new TaskItem(id, description, dueDate)
-            };
             List<TaskItem> actualFilteredTasks = taskManager.FilteredTasks.ToList();
-            CollectionAssert.AreEqual(expectedFilteredTasks, actualFilteredTasks, "Списки FilteredTasks не совпадают.");
+
+            CollectionAssert.AreEqual(expectedTasks, actualTasks);
+            CollectionAssert.AreEqual(expectedTasks, actualFilteredTasks);
         }
     }
 }
