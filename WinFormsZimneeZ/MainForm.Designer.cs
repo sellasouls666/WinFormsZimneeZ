@@ -38,7 +38,7 @@
             this.completeButton = new System.Windows.Forms.Button();
             this.deleteCompletedButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.saveButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tasksTable)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -158,7 +158,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.saveButton);
             this.panel1.Controls.Add(this.deleteButton);
             this.panel1.Controls.Add(this.deleteCompletedButton);
             this.panel1.Controls.Add(this.completeButton);
@@ -168,15 +168,15 @@
             this.panel1.Size = new System.Drawing.Size(484, 78);
             this.panel1.TabIndex = 12;
             // 
-            // button1
+            // saveButton
             // 
-            this.button1.Location = new System.Drawing.Point(328, 28);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Сохранить";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.saveButton.Location = new System.Drawing.Point(328, 28);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(75, 23);
+            this.saveButton.TabIndex = 12;
+            this.saveButton.Text = "Сохранить";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // MainForm
             // 
@@ -207,7 +207,7 @@
         private System.Windows.Forms.Button completeButton;
         private System.Windows.Forms.Button deleteCompletedButton;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button saveButton;
     }
 }
 
