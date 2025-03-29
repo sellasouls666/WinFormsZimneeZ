@@ -19,6 +19,7 @@ namespace WinFormsZimneeZ
         {
             InitializeComponent();
             this.taskManager = taskManager;
+            dateBox.CustomFormat = "MM/dd/yyyy hh:mm:ss";
         }
 
         private void AddButton_Click(object sender, EventArgs e)

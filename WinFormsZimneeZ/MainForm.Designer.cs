@@ -90,7 +90,7 @@
             this.dateBoxForFiltr.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateBoxForFiltr.Location = new System.Drawing.Point(12, 367);
             this.dateBoxForFiltr.Name = "dateBoxForFiltr";
-            this.dateBoxForFiltr.Size = new System.Drawing.Size(92, 20);
+            this.dateBoxForFiltr.Size = new System.Drawing.Size(98, 20);
             this.dateBoxForFiltr.TabIndex = 7;
             // 
             // filtrButton
@@ -99,7 +99,7 @@
             this.filtrButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.filtrButton.Image = ((System.Drawing.Image)(resources.GetObject("filtrButton.Image")));
             this.filtrButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.filtrButton.Location = new System.Drawing.Point(118, 358);
+            this.filtrButton.Location = new System.Drawing.Point(117, 358);
             this.filtrButton.Name = "filtrButton";
             this.filtrButton.Size = new System.Drawing.Size(95, 50);
             this.filtrButton.TabIndex = 8;
@@ -116,7 +116,7 @@
             this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backButton.Image = ((System.Drawing.Image)(resources.GetObject("backButton.Image")));
             this.backButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.backButton.Location = new System.Drawing.Point(219, 353);
+            this.backButton.Location = new System.Drawing.Point(218, 353);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(64, 55);
             this.backButton.TabIndex = 9;

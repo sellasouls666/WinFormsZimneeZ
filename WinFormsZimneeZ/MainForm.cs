@@ -26,9 +26,9 @@ namespace WinFormsZimneeZ
 
         private void InitializeData()
         {
-            taskManager.AddTask(0, "Купить молоко и хлеб", DateTime.Now.AddDays(1));
-            taskManager.AddTask(1, "Пропылесосить и помыть пол", DateTime.Now.AddDays(2));
-            taskManager.AddTask(2, "Подготовить отчет за месяц", DateTime.Now.AddDays(7));
+            taskManager.AddTask(0, "Купить молоко и хлеб", DateTime.Now.AddDays(1).AddHours(2).AddMinutes(3));
+            taskManager.AddTask(1, "Пропылесосить и помыть пол", DateTime.Now.AddDays(2).AddHours(5).AddMinutes(3));
+            taskManager.AddTask(2, "Подготовить отчет за месяц", DateTime.Now.AddDays(7).AddHours(6).AddMinutes(7));
         }
 
       
