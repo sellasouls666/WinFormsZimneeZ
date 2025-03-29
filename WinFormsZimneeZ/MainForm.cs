@@ -15,11 +15,13 @@ namespace WinFormsZimneeZ
     public partial class MainForm: Form
     {
         public TaskManager taskManager = new TaskManager();
+        private BindingSource bindingSource = new BindingSource();
         public MainForm()
         {
             InitializeComponent();
             InitializeData();
             tasksTable.DataSource = taskManager.FilteredTasks;
+            tasksTable.CellFormatting += TasksTable_CellFormatting;
         }
 
         private void InitializeData()
@@ -81,6 +83,21 @@ namespace WinFormsZimneeZ
             else
             {
                 MessageBox.Show("Пожалуйста, выберите задачу для выполнения.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void TasksTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (tasksTable.Rows[e.RowIndex].DataBoundItem is TaskItem task)
+            {
+                if (task.isCompleted_)
+                {
+                    e.CellStyle.BackColor = Color.LightGreen;
+                }
+                else
+                {
+                    e.CellStyle.BackColor = SystemColors.Window;
+                }
             }
         }
 
