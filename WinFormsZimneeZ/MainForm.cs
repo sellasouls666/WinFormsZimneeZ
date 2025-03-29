@@ -15,10 +15,12 @@ namespace WinFormsZimneeZ
     public partial class MainForm: Form
     {
         public TaskManager taskManager = new TaskManager();
+        public SaveToHtml saveToHtml;
         public MainForm()
         {
             InitializeComponent();
             InitializeData();
+            saveToHtml = new SaveToHtml(taskManager);
             tasksTable.DataSource = taskManager.FilteredTasks;
             tasksTable.CellFormatting += TasksTable_CellFormatting;
             tasksTable.CellContentClick += TasksTable_CellContentClick;
@@ -115,6 +117,23 @@ namespace WinFormsZimneeZ
         private void deleteCompletedButton_Click(object sender, EventArgs e)
         {
             taskManager.RemoveCompletedTasks();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+            saveFileDialog.Filter = "HTML files (*.html)|*.html|All files (*.*)|*.*";
+            saveFileDialog.Title = "Выберите место для сохранения списка задач";
+            saveFileDialog.DefaultExt = "html";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog.FileName;
+
+                saveToHtml.Save(filePath); // Вызываем ваш метод сохранения
+                MessageBox.Show("Список задач успешно сохранен в: " + filePath, "Сохранение успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }
