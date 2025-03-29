@@ -21,6 +21,7 @@ namespace WinFormsZimneeZ
             InitializeComponent();
             InitializeData();
             saveToHtml = new SaveToHtml(taskManager);
+            saveToHtml.OnError += SaveToHtml_OnError;
             tasksTable.DataSource = taskManager.FilteredTasks;
             tasksTable.CellFormatting += TasksTable_CellFormatting;
             tasksTable.CellContentClick += TasksTable_CellContentClick;
@@ -151,6 +152,12 @@ namespace WinFormsZimneeZ
                 saveToHtml.Save(filePath);
                 MessageBox.Show("Список задач успешно сохранен в: " + filePath, "Сохранение успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void SaveToHtml_OnError(string errorMessage)
+        {
+            // Этот метод будет вызван, когда в SaveToHtml произойдет ошибка
+            MessageBox.Show(errorMessage, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }
