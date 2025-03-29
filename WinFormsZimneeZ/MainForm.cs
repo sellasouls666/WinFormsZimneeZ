@@ -15,13 +15,13 @@ namespace WinFormsZimneeZ
     public partial class MainForm: Form
     {
         public TaskManager taskManager = new TaskManager();
-        private BindingSource bindingSource = new BindingSource();
         public MainForm()
         {
             InitializeComponent();
             InitializeData();
             tasksTable.DataSource = taskManager.FilteredTasks;
             tasksTable.CellFormatting += TasksTable_CellFormatting;
+            tasksTable.CellContentClick += TasksTable_CellContentClick;
         }
 
         private void InitializeData()
@@ -98,6 +98,17 @@ namespace WinFormsZimneeZ
                 {
                     e.CellStyle.BackColor = SystemColors.Window;
                 }
+            }
+        }
+
+        private void TasksTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == tasksTable.Columns["isCompleted_"].Index && e.RowIndex >= 0)
+            {
+                TaskItem selectedTask = (TaskItem)tasksTable.Rows[e.RowIndex].DataBoundItem;
+
+                taskManager.CompleteTask(selectedTask);
+
             }
         }
 
