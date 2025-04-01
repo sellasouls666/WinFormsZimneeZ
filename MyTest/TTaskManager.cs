@@ -9,6 +9,7 @@ namespace MyTest
     [TestClass]
     public class TTaskManager
     {
+        FillData fillData = new FillData();
         [TestMethod]
         [DataRow("2024-01-10", 0, "Task 1", "2024-01-10", 1, "Task 2", "2024-01-10")]
         [DataRow("2024-01-11", 2, "Task 3", "2024-01-11", 3, "Task 4", "2024-01-11")]
@@ -48,6 +49,7 @@ namespace MyTest
             TaskManager taskManager = new TaskManager();
             List<TaskItem> expectedTasks = new List<TaskItem>();
 
+
             for (int i = 0; i < ids.Length; i++)
             {
                 int id = ids[i];
@@ -66,27 +68,19 @@ namespace MyTest
         }
 
         [TestMethod]
-        [DataRow(new int[] { 2, 3 }, 0, "Task 1", "2024-01-10", 1, "Task 2", "2024-01-10")]
-        [DataRow(new int[] { 0, 1 }, 2, "Task 3", "2024-01-11", 3, "Task 4", "2024-01-11")]
-        public void TestRemoveTask(int[] idsToRemove, params object[] expectedTaskData)
+        [DataRow(new int[] { 2, 3, 4 }, new int[] { 0, 1 }, new string[] { "Task 1", "Task 2" }, new string[] { "2024-01-15", "2024-02-20" })]
+        [DataRow(new int[] { 0, 1 }, new int[] { 2, 3, 4 }, new string[] { "Task 3", "Task 4", "Task 5" }, new string[] { "2024-03-10", "2024-04-05", "2024-04-06" })]
+        public void TestRemoveTask(int[] idsToRemove, int[] ids, string[] descriptions, string[] dueDateStrings)
         {
             TaskManager taskManager = new TaskManager();
 
-            taskManager.AddTask(0, "Task 1", new DateTime(2024, 01, 10));
-            taskManager.AddTask(1, "Task 2", new DateTime(2024, 01, 10));
-            taskManager.AddTask(2, "Task 3", new DateTime(2024, 01, 11));
-            taskManager.AddTask(3, "Task 4", new DateTime(2024, 01, 11));
+            taskManager.AddTask(0, "Task 1", new DateTime(2024, 01, 15));
+            taskManager.AddTask(1, "Task 2", new DateTime(2024, 02, 20));
+            taskManager.AddTask(2, "Task 3", new DateTime(2024, 03, 10));
+            taskManager.AddTask(3, "Task 4", new DateTime(2024, 04, 05));
+            taskManager.AddTask(4, "Task 5", new DateTime(2024, 04, 06));
 
-            List<TaskItem> expectedTasks = new List<TaskItem>();
-
-            for (int i = 0; i < expectedTaskData.Length; i += 3)
-            {
-                int id = Convert.ToInt32(expectedTaskData[i]);
-                string description = (string)expectedTaskData[i + 1];
-                DateTime dueDate = DateTime.Parse((string)expectedTaskData[i + 2]);
-
-                expectedTasks.Add(new TaskItem(id, description, dueDate));
-            }
+            List<TaskItem> expectedTasks = fillData.Fill(ids, descriptions, dueDateStrings);
 
             List<TaskItem> tasks = taskManager.Tasks.ToList();
 
