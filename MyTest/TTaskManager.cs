@@ -68,19 +68,24 @@ namespace MyTest
         }
 
         [TestMethod]
-        [DataRow(new int[] { 2, 3, 4 }, new int[] { 0, 1 }, new string[] { "Task 1", "Task 2" }, new string[] { "2024-01-15", "2024-02-20" })]
-        [DataRow(new int[] { 0, 1 }, new int[] { 2, 3, 4 }, new string[] { "Task 3", "Task 4", "Task 5" }, new string[] { "2024-03-10", "2024-04-05", "2024-04-06" })]
-        public void TestRemoveTask(int[] idsToRemove, int[] ids, string[] descriptions, string[] dueDateStrings)
+        [DataRow(new int[] { 2, 3, 4 }, new int[] { 0, 1, 2, 3, 4 }, new string[] { "Task 1", "Task 2", "Task 3", "Task 4", "Task 5" }, new string[] { "2024-01-15", "2024-02-20", "2024-03-10", "2024-04-05", "2024-04-06" }, 
+            new int[] { 0, 1 }, new string[] { "Task 1", "Task 2" }, new string[] { "2024-01-15", "2024-02-20" })]
+        [DataRow(new int[] { 0, 1 }, new int[] { 0, 1, 2, 3, 4 }, new string[] { "Task 1", "Task 2", "Task 3", "Task 4", "Task 5" }, new string[] { "2024-01-15", "2024-02-20", "2024-03-10", "2024-04-05", "2024-04-06" },
+            new int[] { 2, 3, 4 }, new string[] { "Task 3", "Task 4", "Task 5" }, new string[] { "2024-03-10", "2024-04-05", "2024-04-06" })]
+        public void TestRemoveTask(int[] idsToRemove, int[] ids, string[] descriptions, string[] dueDateStrings,
+            int[] idsForExpected, string[] descriptionsForExpected, string[] dueDateStringsForExpected)
         {
             TaskManager taskManager = new TaskManager();
 
-            taskManager.AddTask(0, "Task 1", new DateTime(2024, 01, 15));
-            taskManager.AddTask(1, "Task 2", new DateTime(2024, 02, 20));
-            taskManager.AddTask(2, "Task 3", new DateTime(2024, 03, 10));
-            taskManager.AddTask(3, "Task 4", new DateTime(2024, 04, 05));
-            taskManager.AddTask(4, "Task 5", new DateTime(2024, 04, 06));
+            List<TaskItem> tasksForFill = fillData.Fill(ids, descriptions, dueDateStrings);
 
-            List<TaskItem> expectedTasks = fillData.Fill(ids, descriptions, dueDateStrings);
+            for (int i = 0; i < tasksForFill.Count; i++)
+            {
+                TaskItem task = tasksForFill[i];
+                taskManager.AddTask(task.id_, task.description_, task.dueDate_);
+            }
+
+            List<TaskItem> expectedTasks = fillData.Fill(idsForExpected, descriptionsForExpected, dueDateStringsForExpected);
 
             List<TaskItem> tasks = taskManager.Tasks.ToList();
 
