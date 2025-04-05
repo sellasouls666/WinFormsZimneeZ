@@ -170,11 +170,16 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(328, 28);
+            this.saveButton.FlatAppearance.BorderSize = 0;
+            this.saveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveButton.Image = ((System.Drawing.Image)(resources.GetObject("saveButton.Image")));
+            this.saveButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.saveButton.Location = new System.Drawing.Point(297, 10);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(75, 23);
+            this.saveButton.Size = new System.Drawing.Size(73, 53);
             this.saveButton.TabIndex = 12;
             this.saveButton.Text = "Сохранить";
+            this.saveButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
