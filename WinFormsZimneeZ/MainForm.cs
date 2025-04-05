@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
@@ -16,6 +17,8 @@ namespace WinFormsZimneeZ
     {
         public TaskManager taskManager = new TaskManager();
         public SaveToHtml saveToHtml;
+        private NotifyIcon notifyIcon;
+        private System.Timers.Timer timer;
         public MainForm()
         {
             InitializeComponent();
@@ -25,16 +28,80 @@ namespace WinFormsZimneeZ
             tasksTable.DataSource = taskManager.FilteredTasks;
             tasksTable.CellFormatting += TasksTable_CellFormatting;
             tasksTable.CellContentClick += TasksTable_CellContentClick;
+            StartTimer();
         }
 
         private void InitializeData()
         {
             taskManager.AddTask(0, "Купить молоко и хлеб", DateTime.Now.AddDays(1).AddHours(2).AddMinutes(3));
             taskManager.AddTask(1, "Пропылесосить и помыть пол", DateTime.Now.AddDays(2).AddHours(5).AddMinutes(3));
-            taskManager.AddTask(2, "Подготовить отчет за месяц", DateTime.Now.AddDays(7).AddHours(6).AddMinutes(7));
+            taskManager.AddTask(3, "Подготовить отчет за месяц", DateTime.Now.AddSeconds(10));
+            taskManager.AddTask(4, "Убраться", DateTime.Now.AddSeconds(10));
         }
 
-      
+        private void StartTimer()
+        {
+            timer = new System.Timers.Timer();
+            timer.Interval = 1000; 
+            timer.Elapsed += Timer_Elapsed;
+            timer.AutoReset = true; 
+            timer.Enabled = true; 
+        }
+
+        private void Timer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            CheckForReminders();
+        }
+
+        private void CheckForReminders()
+        {
+            if (tasksTable.InvokeRequired)
+            {
+                tasksTable.Invoke(new Action(CheckForReminders));
+                return;
+            }
+
+            // Get the list of tasks that need a reminder from the TaskManager
+            List<TaskItem> tasks = taskManager.GetTasksForReminder();
+
+            if (tasks.Count > 0)
+            {
+                // Build the notification message
+                string notificationMessage = "Напоминания о задачах:\n";
+                foreach (TaskItem task in tasks)
+                {
+                    notificationMessage += $"- {task.description_}\n";
+                    task.IsNotified = true; // Mark it notified
+                }
+
+                ShowNotification(notificationMessage); // Show one combined notification
+
+                // Refresh DGV
+                tasksTable.Refresh();
+            }
+        }
+        
+
+        private void ShowNotification(string taskDescription)
+        {
+            // Показываем уведомление в трее
+            notifyIcon.BalloonTipTitle = "Напоминание о задаче";
+            notifyIcon.BalloonTipText = taskDescription;
+            notifyIcon.Visible = true; // Сначала делаем иконку видимой
+            notifyIcon.ShowBalloonTip(10000); // Показываем уведомление на 3 секунды
+
+            // Скрываем иконку после показа уведомления (чтобы не мешала)
+            System.Windows.Forms.Timer hideIconTimer = new System.Windows.Forms.Timer();
+            hideIconTimer.Interval = 10000;
+            hideIconTimer.Tick += (sender, e) => {
+                notifyIcon.Visible = false;
+                hideIconTimer.Stop();
+                hideIconTimer.Dispose();
+            };
+            hideIconTimer.Start();
+        }
+
+
 
         private void addButton_Click(object sender, EventArgs e)
         {

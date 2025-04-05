@@ -1,4 +1,7 @@
-﻿namespace WinFormsZimneeZ
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace WinFormsZimneeZ
 {
     partial class MainForm
     {
@@ -28,6 +31,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.addButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
@@ -40,6 +44,7 @@
             this.saveButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tasksTable = new System.Windows.Forms.DataGridView();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tasksTable)).BeginInit();
@@ -194,8 +199,13 @@
             this.tasksTable.Location = new System.Drawing.Point(0, 78);
             this.tasksTable.MultiSelect = false;
             this.tasksTable.Name = "tasksTable";
+            this.tasksTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tasksTable.Size = new System.Drawing.Size(507, 274);
             this.tasksTable.TabIndex = 14;
+            // 
+            // notifyIcon
+            // 
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
             // 
             // MainForm
             // 

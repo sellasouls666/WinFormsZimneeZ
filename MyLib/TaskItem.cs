@@ -16,6 +16,7 @@ namespace MyLib
         public DateTime dueDate_ { get; set; }
         [DisplayName("Выполнено"), ReadOnly(false)]
         public bool isCompleted_ { get; set; }
+        public bool IsNotified;
 
         public TaskItem(int id, string description, DateTime dueDate)
         {

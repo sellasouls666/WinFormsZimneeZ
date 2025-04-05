@@ -98,5 +98,19 @@ namespace MyLib
                 return tasks.Max(task => task.id_) + 1;
             }
         }
+
+        public List<TaskItem> GetTasksForReminder()
+        {
+            DateTime now = DateTime.Now;
+            DateTime tenSecondsAgo = now.AddSeconds(-10); 
+
+            List<TaskItem> tasks = Tasks.Where(t =>
+                t.dueDate_ >= tenSecondsAgo && 
+                t.dueDate_ <= now &&  
+                !t.IsNotified
+            ).ToList();
+
+            return tasks;
+        }
     }
 }
