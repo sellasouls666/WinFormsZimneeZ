@@ -38,6 +38,7 @@ namespace MyLib
                     writer.WriteLine("table { border-collapse: collapse; width: 100%; }");
                     writer.WriteLine("th, td { border: 1px solid black; padding: 8px; text-align: left; }");
                     writer.WriteLine("th { background-color: #f2f2f2; }");
+                    writer.WriteLine(".completed { background-color: #ccffcc; }");
                     writer.WriteLine("</style>");
                     writer.WriteLine("</head>");
                     writer.WriteLine("<body>");
@@ -48,6 +49,7 @@ namespace MyLib
 
                     foreach (var task in taskManager.FilteredTasks)
                     {
+                        string rowClass = task.isCompleted_ ? "completed" : "";
                         if (task.isCompleted_)
                         {
                             status = "Выполнено";
@@ -56,7 +58,7 @@ namespace MyLib
                         {
                             status = "Не выполнено";
                         }
-                        writer.WriteLine($"<tr><td>{task.GetDescription()}</td><td>{task.GetDate().ToShortDateString()}</td><td>{status}</td></tr>");
+                        writer.WriteLine($"<tr class=\"{rowClass}\"><td>{task.GetDescription()}</td><td>{task.GetDate().ToShortDateString()}</td><td>{status}</td></tr>");
                     }
 
                     writer.WriteLine("</tbody>");

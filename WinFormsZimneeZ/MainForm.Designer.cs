@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.tasksTable = new System.Windows.Forms.DataGridView();
             this.addButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.dateBoxForFiltr = new System.Windows.Forms.DateTimePicker();
@@ -39,21 +38,12 @@
             this.deleteCompletedButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.saveButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.tasksTable)).BeginInit();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.tasksTable = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tasksTable)).BeginInit();
             this.SuspendLayout();
-            // 
-            // tasksTable
-            // 
-            this.tasksTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.tasksTable.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.tasksTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tasksTable.Location = new System.Drawing.Point(12, 86);
-            this.tasksTable.MultiSelect = false;
-            this.tasksTable.Name = "tasksTable";
-            this.tasksTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tasksTable.Size = new System.Drawing.Size(484, 261);
-            this.tasksTable.TabIndex = 0;
             // 
             // addButton
             // 
@@ -89,7 +79,7 @@
             // dateBoxForFiltr
             // 
             this.dateBoxForFiltr.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateBoxForFiltr.Location = new System.Drawing.Point(12, 367);
+            this.dateBoxForFiltr.Location = new System.Drawing.Point(18, 20);
             this.dateBoxForFiltr.Name = "dateBoxForFiltr";
             this.dateBoxForFiltr.Size = new System.Drawing.Size(98, 20);
             this.dateBoxForFiltr.TabIndex = 7;
@@ -100,7 +90,7 @@
             this.filtrButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.filtrButton.Image = ((System.Drawing.Image)(resources.GetObject("filtrButton.Image")));
             this.filtrButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.filtrButton.Location = new System.Drawing.Point(117, 358);
+            this.filtrButton.Location = new System.Drawing.Point(121, 2);
             this.filtrButton.Name = "filtrButton";
             this.filtrButton.Size = new System.Drawing.Size(95, 50);
             this.filtrButton.TabIndex = 8;
@@ -117,9 +107,9 @@
             this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backButton.Image = ((System.Drawing.Image)(resources.GetObject("backButton.Image")));
             this.backButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.backButton.Location = new System.Drawing.Point(218, 353);
+            this.backButton.Location = new System.Drawing.Point(222, 3);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(64, 55);
+            this.backButton.Size = new System.Drawing.Size(64, 52);
             this.backButton.TabIndex = 9;
             this.backButton.Text = "Сбросить";
             this.backButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -163,9 +153,10 @@
             this.panel1.Controls.Add(this.deleteCompletedButton);
             this.panel1.Controls.Add(this.completeButton);
             this.panel1.Controls.Add(this.addButton);
-            this.panel1.Location = new System.Drawing.Point(12, 2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(484, 78);
+            this.panel1.Size = new System.Drawing.Size(507, 78);
             this.panel1.TabIndex = 12;
             // 
             // saveButton
@@ -183,27 +174,47 @@
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.dateBoxForFiltr);
+            this.panel2.Controls.Add(this.filtrButton);
+            this.panel2.Controls.Add(this.backButton);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 352);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(507, 62);
+            this.panel2.TabIndex = 13;
+            // 
+            // tasksTable
+            // 
+            this.tasksTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.tasksTable.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.tasksTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tasksTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tasksTable.Location = new System.Drawing.Point(0, 78);
+            this.tasksTable.MultiSelect = false;
+            this.tasksTable.Name = "tasksTable";
+            this.tasksTable.Size = new System.Drawing.Size(507, 274);
+            this.tasksTable.TabIndex = 14;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(507, 414);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.tasksTable);
-            this.Controls.Add(this.filtrButton);
-            this.Controls.Add(this.backButton);
-            this.Controls.Add(this.dateBoxForFiltr);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Name = "MainForm";
             this.Text = "ToDoList";
-            ((System.ComponentModel.ISupportInitialize)(this.tasksTable)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tasksTable)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView tasksTable;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.DateTimePicker dateBoxForFiltr;
@@ -213,6 +224,8 @@
         private System.Windows.Forms.Button deleteCompletedButton;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DataGridView tasksTable;
     }
 }
 
