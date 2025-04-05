@@ -47,22 +47,6 @@ namespace MyLib
             }
         }
 
-        public void SaveToHtml(string filePath)
-        {
-            using (StreamWriter writer = new StreamWriter(filePath))
-            {
-                writer.WriteLine("<html><body><h1>Список задач</h1><ul>");
-                foreach (var task in tasks)
-                {
-                    if (!task.GetStatus())
-                    {
-                        writer.WriteLine($"<li>{task.GetDescription()} - {task.GetDate().ToShortDateString()}</li>");
-                    }
-                }
-                writer.WriteLine("</ul></body></html>");
-            }
-        }
-
         public void CompleteTask(TaskItem taskToComplete)
         {
             TaskItem taskToUpdate = tasks.FirstOrDefault(task => task.id_ == taskToComplete.id_);

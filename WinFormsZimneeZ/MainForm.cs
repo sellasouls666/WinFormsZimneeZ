@@ -120,23 +120,6 @@ namespace WinFormsZimneeZ
             taskManager.RemoveCompletedTasks();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-
-            saveFileDialog.Filter = "HTML files (*.html)|*.html|All files (*.*)|*.*";
-            saveFileDialog.Title = "Выберите место для сохранения списка задач";
-            saveFileDialog.DefaultExt = "html";
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string filePath = saveFileDialog.FileName;
-
-                saveToHtml.Save(filePath);
-                MessageBox.Show("Список задач успешно сохранен в: " + filePath, "Сохранение успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
         private void saveButton_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
