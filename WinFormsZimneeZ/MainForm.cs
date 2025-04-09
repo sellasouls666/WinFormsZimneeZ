@@ -22,9 +22,12 @@ namespace WinFormsZimneeZ
         public MainForm()
         {
             InitializeComponent();
-            InitializeData();
+            //InitializeData();
             saveToHtml = new SaveToHtml(taskManager);
             saveToHtml.OnError += SaveToHtml_OnError;
+            SQLDataReader sqlreader = new SQLDataReader();
+            taskManager.Tasks = sqlreader.ReadData();
+            taskManager.FilteredTasks = sqlreader.ReadData();
             tasksTable.DataSource = taskManager.FilteredTasks;
             tasksTable.CellFormatting += TasksTable_CellFormatting;
             tasksTable.CellContentClick += TasksTable_CellContentClick;
