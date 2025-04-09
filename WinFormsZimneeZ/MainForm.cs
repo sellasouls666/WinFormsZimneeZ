@@ -22,7 +22,6 @@ namespace WinFormsZimneeZ
         public MainForm()
         {
             InitializeComponent();
-            //InitializeData();
             saveToHtml = new SaveToHtml(taskManager);
             saveToHtml.OnError += SaveToHtml_OnError;
             SQLDataReader sqlreader = new SQLDataReader();
@@ -32,14 +31,6 @@ namespace WinFormsZimneeZ
             tasksTable.CellFormatting += TasksTable_CellFormatting;
             tasksTable.CellContentClick += TasksTable_CellContentClick;
             StartTimer();
-        }
-
-        private void InitializeData()
-        {
-            taskManager.AddTask(0, "Купить молоко и хлеб", DateTime.Now.AddDays(1).AddHours(2).AddMinutes(3));
-            taskManager.AddTask(1, "Пропылесосить и помыть пол", DateTime.Now.AddDays(2).AddHours(5).AddMinutes(3));
-            taskManager.AddTask(3, "Подготовить отчет за месяц", DateTime.Now.AddSeconds(10));
-            taskManager.AddTask(4, "Убраться", DateTime.Now.AddSeconds(10));
         }
 
         private void StartTimer()
