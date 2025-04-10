@@ -74,6 +74,97 @@ namespace MyLib
             }
         }
 
+        public bool AddTask(TaskItem task)  // Метод для добавления пользователя
+        {
+            MySqlConnection conn = null;
+            try
+            {
+                conn = new MySqlConnection(MyConnectionString);
+                conn.Open();
 
+                string query = "INSERT INTO tasks (id, description, due_date) " +
+                               "VALUES (@id, @description, @due_date)";
+                MySqlCommand command = new MySqlCommand(query, conn);
+                command.Parameters.AddWithValue("@id", task.id_);
+                command.Parameters.AddWithValue("@description", task.description_);
+                command.Parameters.AddWithValue("@due_date", task.dueDate_);
+
+                int rowsAffected = command.ExecuteNonQuery();
+                conn.Close();
+
+                return rowsAffected > 0; // Возвращает true, если добавление прошло успешно
+            }
+            catch (MySqlException ex)
+            {
+                return false;
+            }
+            finally
+            {
+                if (conn != null && conn.State == System.Data.ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        public bool UpdateTask(TaskItem task) 
+        {
+            MySqlConnection conn = null;
+            try
+            {
+                conn = new MySqlConnection(MyConnectionString);
+                conn.Open();
+
+                string query = "UPDATE tasks SET status = 1" +
+                               "WHERE id = @id";  
+                MySqlCommand command = new MySqlCommand(query, conn);
+                command.Parameters.AddWithValue("@id", task.id_); 
+
+                int rowsAffected = command.ExecuteNonQuery();
+                conn.Close();
+
+                return rowsAffected > 0;
+            }
+            catch (MySqlException ex)
+            {
+                return false;
+            }
+            finally
+            {
+                if (conn != null && conn.State == System.Data.ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        public bool DeleteCompletedTasks()
+        {
+            MySqlConnection conn = null;
+            try
+            {
+                conn = new MySqlConnection(MyConnectionString);
+                conn.Open();
+
+                string query = "DELETE FROM tasks WHERE status = 1";
+                MySqlCommand command = new MySqlCommand(query, conn);
+
+                int rowsAffected = command.ExecuteNonQuery();
+                conn.Close();
+
+                return rowsAffected > 0;
+            }
+            catch (MySqlException ex)
+            {
+                return false;
+            }
+            finally
+            {
+                if (conn != null && conn.State == System.Data.ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+        }
     }
 }

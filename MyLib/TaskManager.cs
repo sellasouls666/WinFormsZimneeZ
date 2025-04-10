@@ -29,9 +29,9 @@ namespace MyLib
         public void AddTask(int id, string description, DateTime dueDate)
         {
             tasks.Add(new TaskItem(id, description, dueDate));
-            filteredTasks.Add(new TaskItem(id, description, dueDate));
+            //filteredTasks.Add(new TaskItem(id, description, dueDate));
 
-            /// должен быть код для добавления в БД
+            sqlreader.AddTask(new TaskItem(id, description, dueDate));
         }
 
         public void RemoveTask(TaskItem taskToRemove)
@@ -58,6 +58,8 @@ namespace MyLib
             taskToUpdate.SetStatus(true);
             TaskItem taskToUpdateFromFiltered = filteredTasks.FirstOrDefault(task => task.id_ == taskToComplete.id_);
             taskToUpdateFromFiltered.SetStatus(true);
+
+            sqlreader.UpdateTask(taskToComplete);
 
             /// должен быть код на обновление статуса в БД
         }
@@ -87,10 +89,10 @@ namespace MyLib
 
         public void ReturnAllTasks()
         {
-            FilteredTasks.Clear();
+            filteredTasks.Clear();
             foreach (TaskItem task in Tasks)
             {
-                FilteredTasks.Add(task);
+                filteredTasks.Add(task);
             }
         }
 
