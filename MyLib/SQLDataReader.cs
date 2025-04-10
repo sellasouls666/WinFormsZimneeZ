@@ -44,5 +44,36 @@ namespace MyLib
             return result;
         }
 
+        public bool DeleteTask(int id)
+        {
+            MySqlConnection conn = null;
+            try
+            {
+                conn = new MySqlConnection(MyConnectionString);
+                conn.Open();
+
+                string query = "DELETE FROM tasks WHERE id = @id";
+                MySqlCommand command = new MySqlCommand(query, conn);
+                command.Parameters.AddWithValue("@id", id);
+
+                int rowsAffected = command.ExecuteNonQuery();
+                conn.Close();
+
+                return rowsAffected > 0;
+            }
+            catch (MySqlException ex)
+            {
+                return false;
+            }
+            finally
+            {
+                if (conn != null && conn.State == System.Data.ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+
     }
 }

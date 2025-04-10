@@ -24,9 +24,8 @@ namespace WinFormsZimneeZ
             InitializeComponent();
             saveToHtml = new SaveToHtml(taskManager);
             saveToHtml.OnError += SaveToHtml_OnError;
-            SQLDataReader sqlreader = new SQLDataReader();
-            taskManager.Tasks = sqlreader.ReadData();
-            taskManager.FilteredTasks = sqlreader.ReadData();
+            taskManager.Tasks = taskManager.sqlreader.ReadData();
+            taskManager.FilteredTasks = taskManager.Tasks;
             tasksTable.DataSource = taskManager.FilteredTasks;
             tasksTable.CellFormatting += TasksTable_CellFormatting;
             tasksTable.CellContentClick += TasksTable_CellContentClick;

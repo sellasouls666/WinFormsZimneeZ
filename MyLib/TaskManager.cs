@@ -12,6 +12,7 @@ namespace MyLib
     {
         private BindingList<TaskItem> tasks = new BindingList<TaskItem>();
         private BindingList<TaskItem> filteredTasks = new BindingList<TaskItem>();
+        public SQLDataReader sqlreader = new SQLDataReader();
 
         public BindingList<TaskItem> Tasks
         {
@@ -29,12 +30,16 @@ namespace MyLib
         {
             tasks.Add(new TaskItem(id, description, dueDate));
             filteredTasks.Add(new TaskItem(id, description, dueDate));
+
+            /// должен быть код для добавления в БД
         }
 
         public void RemoveTask(TaskItem taskToRemove)
         {
             tasks.Remove(taskToRemove);
             filteredTasks.Remove(taskToRemove);
+
+            sqlreader.DeleteTask(taskToRemove.id_);
         }
 
         public void FilterByDate(DateTime date)
@@ -53,6 +58,8 @@ namespace MyLib
             taskToUpdate.SetStatus(true);
             TaskItem taskToUpdateFromFiltered = filteredTasks.FirstOrDefault(task => task.id_ == taskToComplete.id_);
             taskToUpdateFromFiltered.SetStatus(true);
+
+            /// должен быть код на обновление статуса в БД
         }
 
         public void RemoveCompletedTasks()
