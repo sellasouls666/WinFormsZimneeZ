@@ -14,6 +14,15 @@ namespace MyLib
         private BindingList<TaskItem> filteredTasks = new BindingList<TaskItem>();
         public SQLDataReader sqlreader = new SQLDataReader();
 
+        public TaskManager(SQLDataReader sqlreader)
+        {
+            tasks = sqlreader.ReadData();
+            foreach (TaskItem task in Tasks)
+            {
+                filteredTasks.Add(task);
+            }
+        }
+
         public BindingList<TaskItem> Tasks
         {
             get { return tasks; }
@@ -29,7 +38,7 @@ namespace MyLib
         public void AddTask(int id, string description, DateTime dueDate)
         {
             tasks.Add(new TaskItem(id, description, dueDate));
-            //filteredTasks.Add(new TaskItem(id, description, dueDate));
+            filteredTasks.Add(new TaskItem(id, description, dueDate));
 
             sqlreader.AddTask(new TaskItem(id, description, dueDate));
         }
@@ -85,6 +94,8 @@ namespace MyLib
                 tasks.Add(task);
             }
             tasks.ResetBindings();
+
+            sqlreader.DeleteCompletedTasks();
         }
 
         public void ReturnAllTasks()

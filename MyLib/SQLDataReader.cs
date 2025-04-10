@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 
@@ -39,6 +40,7 @@ namespace MyLib
 
             catch (MySqlException ex)
             {
+                MessageBox.Show(ex.Message);
                 return result;
             }
             return result;
@@ -63,6 +65,7 @@ namespace MyLib
             }
             catch (MySqlException ex)
             {
+                MessageBox.Show(ex.Message);
                 return false;
             }
             finally
@@ -96,6 +99,7 @@ namespace MyLib
             }
             catch (MySqlException ex)
             {
+                MessageBox.Show(ex.Message);
                 return false;
             }
             finally
@@ -116,7 +120,7 @@ namespace MyLib
                 conn.Open();
 
                 string query = "UPDATE tasks SET status = 1" +
-                               "WHERE id = @id";  
+                               " WHERE id = @id";  
                 MySqlCommand command = new MySqlCommand(query, conn);
                 command.Parameters.AddWithValue("@id", task.id_); 
 
@@ -127,6 +131,7 @@ namespace MyLib
             }
             catch (MySqlException ex)
             {
+                MessageBox.Show(ex.Message);
                 return false;
             }
             finally
@@ -156,6 +161,7 @@ namespace MyLib
             }
             catch (MySqlException ex)
             {
+                MessageBox.Show(ex.Message);
                 return false;
             }
             finally

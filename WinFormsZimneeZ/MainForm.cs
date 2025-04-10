@@ -15,7 +15,8 @@ namespace WinFormsZimneeZ
 {
     public partial class MainForm: Form
     {
-        public TaskManager taskManager = new TaskManager();
+        public static SQLDataReader sqlreader = new SQLDataReader();
+        public TaskManager taskManager = new TaskManager(sqlreader);
         public SaveToHtml saveToHtml;
         private NotifyIcon notifyIcon;
         private System.Timers.Timer timer;
@@ -24,8 +25,6 @@ namespace WinFormsZimneeZ
             InitializeComponent();
             saveToHtml = new SaveToHtml(taskManager);
             saveToHtml.OnError += SaveToHtml_OnError;
-            taskManager.Tasks = taskManager.sqlreader.ReadData();
-            taskManager.FilteredTasks = taskManager.Tasks;
             tasksTable.DataSource = taskManager.FilteredTasks;
             tasksTable.CellFormatting += TasksTable_CellFormatting;
             tasksTable.CellContentClick += TasksTable_CellContentClick;
