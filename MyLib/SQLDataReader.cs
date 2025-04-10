@@ -23,7 +23,7 @@ namespace MyLib
                 conn = new MySqlConnection(MyConnectionString);
                 conn.Open();
 
-                const string quary = "SELECT id, description, due_date from tasks";
+                const string quary = "SELECT id, description, due_date, status from tasks";
                 MySqlCommand command = new MySqlCommand(quary, conn);
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
@@ -32,7 +32,9 @@ namespace MyLib
                         int Id = reader.GetInt32("id");
                         string Description = reader.GetString("description");
                         DateTime Due_date = reader.GetDateTime("due_date");
+                        bool status = reader.GetBoolean("status");
                         TaskItem ti = new TaskItem(Id, Description, Due_date);
+                        ti.isCompleted_ = status;
                         result.Add(ti);
                     }
                 }
